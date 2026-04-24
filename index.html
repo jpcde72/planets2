@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planet Builder & Explorer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+        "orbit": "https://unpkg.com/three@0.165.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Planet Builder & Explorer</h1>
+    <p>Design interesting star systems and explore at least one multicellular-life candidate world.</p>
+  </header>
+
+  <main>
+    <section class="panel builder-panel">
+      <h2>1) Star System Builder</h2>
+      <div class="builder-grid">
+        <label>Star Name
+          <input id="starName" value="Helion" />
+        </label>
+        <label>Star Type
+          <select id="starType">
+            <option>G-type Main Sequence</option>
+            <option>K-type Main Sequence</option>
+            <option>F-type Main Sequence</option>
+            <option>M-type Main Sequence</option>
+          </select>
+        </label>
+        <label>System Age (billion years)
+          <input id="systemAge" type="number" min="0.5" max="12" step="0.1" value="4.8" />
+        </label>
+        <label>Number of Planets
+          <input id="planetCount" type="range" min="3" max="10" value="6" />
+          <span id="planetCountLabel">6</span>
+        </label>
+        <label>Habitable Zone Bias
+          <input id="habBias" type="range" min="0" max="100" value="55" />
+          <span id="habBiasLabel">55%</span>
+        </label>
+      </div>
+      <button id="generateSystem">Generate System</button>
+    </section>
+
+    <section class="panel visual-panel">
+      <h2>2) 3D System Visualization</h2>
+      <div id="sceneContainer"></div>
+      <p class="hint">Interaction: Drag to orbit camera, scroll to zoom, click a planet in the list to focus it.</p>
+    </section>
+
+    <section class="panel explorer-panel">
+      <h2>3) Planet Explorer</h2>
+      <div class="explorer-layout">
+        <aside>
+          <h3>Planets</h3>
+          <ul id="planetList"></ul>
+        </aside>
+        <article>
+          <h3 id="planetTitle">No planet selected</h3>
+          <div id="planetSummary" class="cards"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel atlas-panel">
+      <h2>4) Atlas-Style Map</h2>
+      <canvas id="atlasCanvas" width="720" height="360"></canvas>
+      <p class="hint">Interaction: move the mouse over the map to inspect terrain, climate and biome hints.</p>
+      <div id="atlasInfo" class="badge">Hover over the map.</div>
+    </section>
+
+    <section class="panel report-panel">
+      <h2>5) Field Reports</h2>
+      <div class="report-controls">
+        <button data-report="fauna">Fauna</button>
+        <button data-report="flora">Flora</button>
+        <button data-report="biomes">Biomes</button>
+        <button data-report="climate">Climate Zones</button>
+        <button data-report="geo">Geographical Features</button>
+      </div>
+      <pre id="reportOutput">Generate a system and select a life-supporting planet to view reports.</pre>
+    </section>
+
+    <section class="panel extra-panel">
+      <h2>6) Extra Views & Interactions (3+)</h2>
+      <div class="extra-grid">
+        <div>
+          <h3>Climate Slice View</h3>
+          <input id="latitudeSlider" type="range" min="-90" max="90" value="0" />
+          <p id="latitudeReadout">Latitude 0°</p>
+        </div>
+        <div>
+          <h3>Expedition Planner</h3>
+          <button id="planExpedition">Generate Expedition Route</button>
+          <p id="expeditionRoute">No route generated yet.</p>
+        </div>
+        <div>
+          <h3>Time-Lapse Seasons</h3>
+          <button id="advanceSeason">Advance Season</button>
+          <p id="seasonStatus">Current season: Vernal</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

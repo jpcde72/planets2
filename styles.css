@@ -1,0 +1,125 @@
+:root {
+  color-scheme: dark;
+  --bg: #101626;
+  --panel: #182036;
+  --border: #29385c;
+  --accent: #76d6ff;
+  --text: #e5efff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #18284f, #0d1323 65%);
+  color: var(--text);
+}
+
+header {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,0.2);
+}
+
+main {
+  width: min(1100px, 96vw);
+  margin: 1rem auto 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.builder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+label { display: grid; gap: 0.3rem; font-size: 0.9rem; }
+input, select, button {
+  background: #0f1730;
+  color: var(--text);
+  border: 1px solid #355089;
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+}
+button { cursor: pointer; }
+button:hover { border-color: var(--accent); }
+
+#sceneContainer {
+  height: 420px;
+  border-radius: 12px;
+  border: 1px solid #2f4370;
+  overflow: hidden;
+}
+
+.explorer-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1rem;
+}
+
+#planetList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 320px;
+  overflow: auto;
+  display: grid;
+  gap: 0.4rem;
+}
+
+#planetList li button {
+  width: 100%;
+  text-align: left;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+.card {
+  background: #0f1730;
+  border: 1px solid #2b3e69;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+#atlasCanvas {
+  width: min(100%, 720px);
+  border: 1px solid #34508b;
+  border-radius: 8px;
+  background: #0c1223;
+}
+
+.badge { margin-top: 0.5rem; color: var(--accent); }
+.hint { opacity: 0.85; font-size: 0.9rem; }
+
+.report-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+#reportOutput {
+  margin-top: 0.7rem;
+  padding: 0.8rem;
+  background: #0c1330;
+  border: 1px solid #2f4477;
+  border-radius: 8px;
+  white-space: pre-wrap;
+}
+
+.extra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 850px) {
+  .explorer-layout { grid-template-columns: 1fr; }
+}
