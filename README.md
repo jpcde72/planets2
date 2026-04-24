@@ -10,3 +10,8 @@ Interactive Planet Builder & Explorer:
 
 ## Run
 Open `index.html` in a modern browser (internet access required for the Three.js CDN imports).
+
+## Quick validation
+- `node --check app.js`
+- `git diff --check`
+- `python - <<'PY'\nprint("noop")\nPY`
